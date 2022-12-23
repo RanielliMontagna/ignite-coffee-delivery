@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 
 import { Home } from 'pages/home'
 import { Checkout } from 'pages/checkout'
+import { ConfirmedOrder } from 'pages/confirmedOrder'
 import { DefaultLayout } from 'layouts/defaultLayout'
 
 export function Router() {
@@ -10,6 +11,7 @@ export function Router() {
       <Route path="/" element={<DefaultLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/confirmed-order" element={<ConfirmedOrder />} />
 
         <Route path="*" element={<Navigate to="/" />} />
       </Route>

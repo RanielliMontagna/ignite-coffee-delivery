@@ -1,6 +1,5 @@
 import {
   BenefitContainer,
-  BenefitIconContainer,
   BenefitsContainer,
   IntroContainer,
   MainContainer,
@@ -8,6 +7,7 @@ import {
 
 import CoffeeIllustration from 'assets/intro/coffee.png'
 import { benefits } from './static'
+import { RoundedIcon } from 'components/roundedIcon'
 
 export function Intro() {
   return (
@@ -25,9 +25,10 @@ export function Intro() {
         <BenefitsContainer>
           {benefits.map((benefits) => (
             <BenefitContainer key={benefits.id}>
-              <BenefitIconContainer color={benefits.color}>
-                <benefits.icon size={16} weight="fill" />
-              </BenefitIconContainer>
+              <RoundedIcon
+                color={benefits.color}
+                icon={<benefits.icon size={16} weight="fill" />}
+              />
               <p>{benefits.title}</p>
             </BenefitContainer>
           ))}

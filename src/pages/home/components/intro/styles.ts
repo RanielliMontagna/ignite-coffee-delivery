@@ -57,20 +57,3 @@ export const BenefitContainer = styled.div`
   gap: 1rem;
   align-items: center;
 `
-
-interface BenefitIconContainerProps {
-  color: string
-}
-
-export const BenefitIconContainer = styled.div<BenefitIconContainerProps>`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 2rem;
-  height: 2rem;
-  border-radius: 16px;
-
-  background: ${(props) => props.color};
-  color: ${({ theme }) => theme['gray-100']};
-`
