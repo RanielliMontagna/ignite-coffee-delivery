@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const IntroContainer = styled.section`
   display: flex;
   justify-content: space-between;
+  padding: 5.75rem 0;
 
   > img {
     width: 100%;
@@ -28,9 +29,10 @@ export const MainContainer = styled.main`
   h1 {
     line-height: 130%;
     font-size: 3rem;
+    font-weight: 800;
   }
 
-  h2 {
+  > p {
     font-family: 'Roboto', sans-serif;
     font-weight: normal;
     font-size: 1.25rem;

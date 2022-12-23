@@ -18,10 +18,10 @@ export function Intro() {
           <br />
           para qualquer hora do dia
         </h1>
-        <h2>
+        <p>
           Com o Coffee Delivery você recebe seu café onde estiver, a<br />
           qualquer hora
-        </h2>
+        </p>
         <BenefitsContainer>
           {benefits.map((benefits) => (
             <BenefitContainer key={benefits.id}>
