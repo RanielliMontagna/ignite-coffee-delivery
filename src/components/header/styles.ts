@@ -5,6 +5,15 @@ export const HeaderContainer = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 2rem 0;
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    padding: 0.5rem 0.5rem;
+    border-radius: 6px;
+  }
 `
 
 export const NavContainer = styled.nav`
