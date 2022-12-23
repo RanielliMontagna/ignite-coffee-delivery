@@ -8,15 +8,18 @@ import {
 } from './styles'
 
 import LogoCoffeeDelivery from 'assets/logo/logo-with-text.svg'
+import { useHeader } from './useHeader'
 
 export function Header() {
+  const { location } = useHeader()
+
   return (
     <HeaderContainer>
       <img src={LogoCoffeeDelivery} alt="" />
       <NavContainer>
         <LocationContainer>
           <MapPin weight="fill" className="icon" size={22} />
-          Porto Alegre, RS
+          {location}
         </LocationContainer>
         <CartButton>
           <ShoppingCart weight="fill" size={22} />
