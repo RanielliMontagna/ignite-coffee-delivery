@@ -1,10 +1,14 @@
 import styled from 'styled-components'
 
 export const HeaderContainer = styled.header`
+  position: sticky;
+  top: 0;
+  background-color: ${({ theme }) => theme['gray-100']};
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 0;
+  padding: 1rem 0;
 
   a {
     display: flex;

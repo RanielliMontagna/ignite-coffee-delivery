@@ -1,5 +1,8 @@
+import { Minus, Plus, ShoppingCartSimple } from 'phosphor-react'
 import { coffeeList } from './static'
 import {
+  AmountContainer,
+  CartButton,
   CoffeeCard,
   CoffeeCardTag,
   CoffeeListContainer,
@@ -35,6 +38,20 @@ export function CoffeeList() {
                     minimumFractionDigits: 2,
                   })}
                 </h4>
+                <div>
+                  <AmountContainer>
+                    <button>
+                      <Minus size={14} weight="bold" />
+                    </button>
+                    <span>1</span>
+                    <button>
+                      <Plus size={14} weight="bold" />
+                    </button>
+                  </AmountContainer>
+                  <CartButton>
+                    <ShoppingCartSimple weight="fill" size={22} />
+                  </CartButton>
+                </div>
               </div>
             </CoffeeCard>
           )

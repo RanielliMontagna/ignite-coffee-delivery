@@ -60,9 +60,11 @@ export const CoffeeCard = styled.div`
   .footer {
     display: flex;
     flex: 1;
+    width: 100%;
     align-items: flex-end;
+    justify-content: space-between;
 
-    h4 {
+    > h4 {
       font-size: 1.5rem;
       font-weight: 800;
       color: ${({ theme }) => theme['gray-700']};
@@ -73,6 +75,67 @@ export const CoffeeCard = styled.div`
         font-family: 'Roboto', sans-serif;
       }
     }
+
+    > div {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  }
+`
+
+export const AmountContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  border-radius: 4px;
+  height: 2.375rem;
+  padding: 0.5rem;
+
+  background-color: ${({ theme }) => theme['gray-400']};
+
+  > button {
+    border: none;
+    cursor: pointer;
+    color: ${({ theme }) => theme['purple-500']};
+    background: transparent;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  > span {
+    width: 1.25rem;
+  }
+`
+
+export const CartButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: none;
+
+  background-color: ${({ theme }) => theme['purple-700']};
+  color: ${({ theme }) => theme['gray-100']};
+
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+
+  &:hover {
+    background-color: ${({ theme }) => theme['purple-500']};
+    transition: all 0.1s ease-in-out;
+  }
+
+  &:focus {
+    box-shadow: none;
   }
 `
 
