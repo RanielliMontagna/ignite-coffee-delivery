@@ -43,7 +43,12 @@ export const LocationContainer = styled.div`
   }
 `
 
-export const CartButton = styled.button`
+interface CartButtonProps {
+  quantityInCart: number
+}
+
+export const CartButton = styled.button<CartButtonProps>`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -56,4 +61,25 @@ export const CartButton = styled.button`
   color: ${({ theme }) => theme['yellow-700']};
 
   cursor: pointer;
+
+  &:before {
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+
+    visibility: ${({ quantityInCart }) =>
+      quantityInCart > 0 ? 'visible' : 'hidden'};
+    content: '${({ quantityInCart }) => quantityInCart}';
+    width: 1.25rem;
+    height: 1.25rem;
+    line-height: 1.25rem;
+    font-size: 0.75rem;
+
+    border-radius: 50%;
+
+    background-color: ${({ theme }) => theme['yellow-700']};
+    color: ${({ theme }) => theme['gray-100']};
+
+    text-align: center;
+  }
 `

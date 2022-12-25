@@ -1,3 +1,5 @@
+import uuid from 'react-uuid'
+
 /* eslint-disable no-unused-vars */
 export enum tags {
   TRADICIONAL = 'TRADICIONAL',
@@ -7,8 +9,9 @@ export enum tags {
   ALCOOLICO = 'ALCOÓLICO',
 }
 
-export const coffeeList = [
+export const coffeesList = [
   {
+    id: uuid(),
     image: 'src/assets/coffees/expresso.png',
     title: 'Expresso Tradicional',
     description: 'O tradicional café feito com água quente e grãos moídos',
@@ -16,6 +19,7 @@ export const coffeeList = [
     tags: [tags.TRADICIONAL],
   },
   {
+    id: uuid(),
     image: 'src/assets/coffees/americano.png',
     title: 'Expresso Americano',
     description: 'Expresso diluído, menos intenso que o tradicional',
@@ -23,6 +27,7 @@ export const coffeeList = [
     tags: [tags.TRADICIONAL],
   },
   {
+    id: uuid(),
     image: 'src/assets/coffees/expresso-cremoso.png',
     title: 'Expresso Cremoso',
     description: 'Café expresso tradicional com espuma cremosa',
@@ -30,6 +35,7 @@ export const coffeeList = [
     tags: [tags.TRADICIONAL],
   },
   {
+    id: uuid(),
     image: 'src/assets/coffees/gelado.png',
     title: 'Expresso Gelado',
     description: 'Bebida preparada com café expresso e cubos de gelo',
@@ -37,6 +43,7 @@ export const coffeeList = [
     tags: [tags.TRADICIONAL, tags.GELADO],
   },
   {
+    id: uuid(),
     image: 'src/assets/coffees/com-leite.png',
     title: 'Café com Leite',
     description: 'Meio a meio de expresso tradicional com leite vaporizado',
@@ -44,6 +51,7 @@ export const coffeeList = [
     tags: [tags.TRADICIONAL, tags.COM_LEITE],
   },
   {
+    id: uuid(),
     image: 'src/assets/coffees/latte.png',
     title: 'Latte',
     description:
@@ -52,6 +60,7 @@ export const coffeeList = [
     tags: [tags.TRADICIONAL, tags.COM_LEITE],
   },
   {
+    id: uuid(),
     image: 'src/assets/coffees/capuccino.png',
     title: 'Capuccino',
     description:
@@ -60,6 +69,7 @@ export const coffeeList = [
     tags: [tags.TRADICIONAL, tags.COM_LEITE],
   },
   {
+    id: uuid(),
     image: 'src/assets/coffees/macchiato.png',
     title: 'Macchiato',
     description:
@@ -68,6 +78,7 @@ export const coffeeList = [
     tags: [tags.TRADICIONAL, tags.COM_LEITE],
   },
   {
+    id: uuid(),
     image: 'src/assets/coffees/mochaccino.png',
     title: 'Mocaccino',
     description: 'Café expresso com calda de chocolate, pouco leite e espuma',
@@ -75,6 +86,7 @@ export const coffeeList = [
     tags: [tags.TRADICIONAL, tags.COM_LEITE],
   },
   {
+    id: uuid(),
     image: 'src/assets/coffees/chocolate-quente.png',
     title: 'Chocolate Quente',
     description: 'Bebida feita com chocolate dissolvido no leite quente e café',
@@ -82,6 +94,7 @@ export const coffeeList = [
     tags: [tags.ESPECIAL, tags.COM_LEITE],
   },
   {
+    id: uuid(),
     image: 'src/assets/coffees/cubano.png',
     title: 'Cubano',
     description:
@@ -90,6 +103,7 @@ export const coffeeList = [
     tags: [tags.ESPECIAL, tags.ALCOOLICO, tags.GELADO],
   },
   {
+    id: uuid(),
     image: 'src/assets/coffees/havaiano.png',
     title: 'Havaiano',
     description: 'Bebida adocicada preparada com café e leite de coco',
@@ -97,6 +111,7 @@ export const coffeeList = [
     tags: [tags.ESPECIAL],
   },
   {
+    id: uuid(),
     image: 'src/assets/coffees/arabe.png',
     title: 'Árabe',
     description: 'Bebida preparada com grãos de café árabe e especiarias',
@@ -104,6 +119,7 @@ export const coffeeList = [
     tags: [tags.ESPECIAL],
   },
   {
+    id: uuid(),
     image: 'src/assets/coffees/irlandes.png',
     title: 'Irlandês',
     description: 'Bebida a base de café, uísque irlandês, açúcar e chantilly',

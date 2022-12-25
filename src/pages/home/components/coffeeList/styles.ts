@@ -7,7 +7,7 @@ export const CoffeeListContainer = styled.div`
     margin-bottom: 3rem;
   }
 
-  > div {
+  > form {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(256px, 1fr));
     gap: 2rem;

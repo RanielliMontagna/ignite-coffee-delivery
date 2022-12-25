@@ -10,8 +10,15 @@ import {
 import LogoCoffeeDelivery from 'assets/logo/logo-with-text.svg'
 import { useHeader } from './useHeader'
 import { NavLink, useNavigate } from 'react-router-dom'
+import { useCartContext } from 'context/cartContext'
 
 export function Header() {
+  const { coffees } = useCartContext()
+
+  const coffeesInCart = coffees?.reduce((acc, curr) => {
+    return acc + curr.quantity
+  }, 0)
+
   const _navigate = useNavigate()
   const { location } = useHeader()
 
@@ -25,7 +32,10 @@ export function Header() {
           <MapPin weight="fill" className="icon" size={22} />
           {location}
         </LocationContainer>
-        <CartButton onClick={() => _navigate('/checkout')}>
+        <CartButton
+          onClick={() => _navigate('/checkout')}
+          quantityInCart={coffeesInCart || 0}
+        >
           <ShoppingCart weight="fill" size={22} />
         </CartButton>
       </NavContainer>
