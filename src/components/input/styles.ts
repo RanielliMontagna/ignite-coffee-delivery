@@ -19,7 +19,7 @@ export const InputContainer = styled.div`
     }
   }
 
-  div {
+  div.endadornment {
     position: absolute;
     padding: 0.75rem;
     right: 0;
@@ -28,10 +28,29 @@ export const InputContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
 
     font-size: 0.75rem;
+    height: 42.8px;
     color: ${({ theme }) => theme['gray-600']};
     font-style: italic;
+  }
+`
+
+export const ErroContainer = styled.div`
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: ${({ theme }) => theme['red-500']};
+
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem;
+  align-items: center;
+
+  p {
+    //max 2 lines
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 `

@@ -1,22 +1,42 @@
-import { InputHTMLAttributes, ReactNode } from 'react'
+import { Warning } from 'phosphor-react'
+import { InputHTMLAttributes, ReactNode, forwardRef } from 'react'
+import { useFormContext } from 'react-hook-form'
 import uuid from 'react-uuid'
-import { InputContainer } from './styles'
+
+import { ErroContainer, InputContainer } from './styles'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  endAdornment?: ReactNode
+  endadornment?: ReactNode
 }
 
-export function Input(props: InputProps) {
+function Input(props: InputProps, ref: any) {
   const id = uuid()
+
+  const {
+    formState: { errors },
+  } = useFormContext()
+
+  const errorMessage = errors[props.name || 0]?.message as string
 
   return (
     <InputContainer>
-      <input {...props} id={id} />
-      {props.endAdornment && (
-        <div onClick={() => window.document.getElementById(id)?.focus()}>
-          {props.endAdornment}
+      <input {...props} id={id} ref={ref} />
+      {props.endadornment && (
+        <div
+          className="endadornment"
+          onClick={() => window.document.getElementById(id)?.focus()}
+        >
+          {props.endadornment}
         </div>
+      )}
+      {props.name && errors[props.name] && (
+        <ErroContainer>
+          <Warning size={18} />
+          <p title={errorMessage}>{errorMessage}</p>
+        </ErroContainer>
       )}
     </InputContainer>
   )
 }
+
+export default forwardRef(Input)
