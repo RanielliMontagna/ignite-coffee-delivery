@@ -34,6 +34,7 @@ export function Header() {
         </LocationContainer>
         <CartButton
           onClick={() => _navigate('/checkout')}
+          disabled={!coffeesInCart}
           quantityInCart={coffeesInCart || 0}
         >
           <ShoppingCart weight="fill" size={22} />

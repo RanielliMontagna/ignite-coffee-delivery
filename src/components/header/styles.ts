@@ -82,4 +82,9 @@ export const CartButton = styled.button<CartButtonProps>`
 
     text-align: center;
   }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 `
