@@ -1,6 +1,10 @@
+import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import * as zod from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
+
+import { useOrderContext } from 'context/orderContext'
+import { useCartContext } from 'context/cartContext'
 
 const checkoutSchema = zod.object({
   cep: zod
@@ -26,6 +30,10 @@ const checkoutSchema = zod.object({
 export type CheckoutFormValues = zod.infer<typeof checkoutSchema>
 
 export function useCheckout() {
+  const _navigate = useNavigate()
+  const { updateCheckoutValues } = useOrderContext()
+  const { handleClearCart } = useCartContext()
+
   const methods = useForm<CheckoutFormValues>({
     resolver: zodResolver(checkoutSchema),
     defaultValues: {
@@ -34,7 +42,10 @@ export function useCheckout() {
   })
 
   const onSubmit = methods.handleSubmit((data) => {
-    console.log(data)
+    updateCheckoutValues(data)
+    handleClearCart()
+
+    _navigate('/confirmed-order', { replace: true })
   })
 
   return {

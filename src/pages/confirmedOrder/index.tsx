@@ -1,11 +1,34 @@
-import { ConfirmedOrderContainer, PaperInfo, TitleContainer } from './styles'
-import illustration from 'assets/confirmedOrder/illustration.svg'
-import { RoundedIcon } from 'components/roundedIcon'
+import { useEffect, useMemo } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useTheme } from 'styled-components'
 import { Clock, CurrencyDollar, MapPin } from 'phosphor-react'
 
+import { ConfirmedOrderContainer, PaperInfo, TitleContainer } from './styles'
+import illustration from 'assets/confirmedOrder/illustration.svg'
+import { RoundedIcon } from 'components/roundedIcon'
+import { useOrderContext } from 'context/orderContext'
+
 export function ConfirmedOrder() {
+  const _navigate = useNavigate()
   const theme = useTheme()
+  const { checkoutValues, updateCheckoutValues } = useOrderContext()
+
+  useEffect(() => {
+    if (Object.keys(checkoutValues).length === 0) {
+      _navigate('/')
+    }
+  }, [_navigate, checkoutValues, updateCheckoutValues])
+
+  const paymentMethod = useMemo(() => {
+    switch (checkoutValues.paymentMethod) {
+      case '0':
+        return 'Cartão de Crédito'
+      case '1':
+        return 'Cartão de Débito'
+      case '2':
+        return 'Dinheiro'
+    }
+  }, [checkoutValues])
 
   return (
     <ConfirmedOrderContainer>
@@ -22,9 +45,15 @@ export function ConfirmedOrder() {
             />
             <div>
               <span>
-                Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
+                Entrega em{' '}
+                <strong>
+                  {checkoutValues.street}, {checkoutValues.number}
+                </strong>
               </span>
-              <span>Farrapos - Porto Alegre, RS</span>
+              <span>
+                {checkoutValues.neighborhood} - {checkoutValues.city},{' '}
+                {checkoutValues.state}
+              </span>
             </div>
           </div>
           <div>
@@ -47,7 +76,7 @@ export function ConfirmedOrder() {
             <div>
               <span>Pagamento na entrega</span>
               <span>
-                <strong>Cartão de Crédito</strong>
+                <strong>{paymentMethod}</strong>
               </span>
             </div>
           </div>

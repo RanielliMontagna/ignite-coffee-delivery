@@ -34,6 +34,10 @@ export function cartReducer(state: CartState, action: any) {
           coffee.quantity = action.payload.quantity
         }
       })
+    case CartActionTypes.CLEAR_CART:
+      return produce(state, (draft) => {
+        draft.coffees = []
+      })
     default:
       return state
   }

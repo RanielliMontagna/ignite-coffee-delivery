@@ -3,6 +3,7 @@ import {
   addToCart,
   removeFromCart,
   changeCartItemQuantity,
+  clearCart,
 } from 'reducers/cart/actions'
 
 import { cartReducer } from 'reducers/cart/reducer'
@@ -13,6 +14,7 @@ interface CartContextType {
   handleAddCoffeeToCart: (coffee: ICoffee) => void
   handleRemoveCoffeeFromCart: (coffeeId: string) => void
   handleChangeCoffeeQuantity: (coffeeId: string, quantity: number) => void
+  handleClearCart: () => void
 }
 
 export const CartContext = createContext({} as CartContextType)
@@ -36,6 +38,10 @@ export const CartContextProvider = ({ children }: PropsWithChildren) => {
     dispatch(changeCartItemQuantity(coffeeId, quantity))
   }
 
+  function handleClearCart() {
+    dispatch(clearCart())
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -43,6 +49,7 @@ export const CartContextProvider = ({ children }: PropsWithChildren) => {
         handleAddCoffeeToCart,
         handleRemoveCoffeeFromCart,
         handleChangeCoffeeQuantity,
+        handleClearCart,
       }}
     >
       {children}
