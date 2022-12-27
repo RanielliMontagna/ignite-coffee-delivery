@@ -20,10 +20,7 @@ const checkoutSchema = zod.object({
   // 0 = Cartão de crédito
   // 1 = Cartão de débito
   // 2 = Dinheiro
-  paymentMethod: zod
-    .number()
-    .min(0, 'Método de pagamento inválido')
-    .max(2, 'Método de pagamento inválido'),
+  paymentMethod: zod.string().min(1, 'Selecione uma forma de pagamento'),
 })
 
 export type CheckoutFormValues = zod.infer<typeof checkoutSchema>
@@ -31,6 +28,9 @@ export type CheckoutFormValues = zod.infer<typeof checkoutSchema>
 export function useCheckout() {
   const methods = useForm<CheckoutFormValues>({
     resolver: zodResolver(checkoutSchema),
+    defaultValues: {
+      paymentMethod: '',
+    },
   })
 
   const onSubmit = methods.handleSubmit((data) => {
