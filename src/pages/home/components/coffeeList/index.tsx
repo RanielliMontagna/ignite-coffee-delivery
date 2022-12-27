@@ -1,16 +1,17 @@
-import { Minus, Plus, ShoppingCartSimple } from 'phosphor-react'
+import { ShoppingCartSimple } from 'phosphor-react'
 import { useForm, useFieldArray } from 'react-hook-form'
 
 import { useCartContext } from 'context/cartContext'
 import { coffeesList } from './static'
 import {
-  AmountContainer,
   CartButton,
   CoffeeCard,
   CoffeeCardTag,
   CoffeeListContainer,
   CoffeeTagsContainer,
 } from './styles'
+import { formatToBRL } from 'utils/formatToBrl'
+import { AmoutDisplay } from 'components/amountDisplay'
 
 export function CoffeeList() {
   const { coffees, handleChangeCoffeeQuantity, handleAddCoffeeToCart } =
@@ -53,40 +54,26 @@ export function CoffeeList() {
               <div className="footer">
                 <h4>
                   <span>R$ </span>
-                  {coffee.price.toLocaleString('pt-BR', {
-                    style: 'decimal',
-                    currency: 'BRL',
-                    minimumFractionDigits: 2,
-                  })}
+                  {formatToBRL(coffee.price)}
                 </h4>
                 <div>
-                  <AmountContainer>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        if (coffee.quantity === 1) return
+                  <AmoutDisplay
+                    quantity={coffee.quantity}
+                    decrement={() => {
+                      if (coffee.quantity === 1) return
 
-                        update(index, {
-                          ...coffee,
-                          quantity: coffee.quantity - 1,
-                        })
-                      }}
-                    >
-                      <Minus size={14} weight="bold" />
-                    </button>
-                    <span>{coffee.quantity}</span>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        update(index, {
-                          ...coffee,
-                          quantity: coffee.quantity + 1,
-                        })
-                      }}
-                    >
-                      <Plus size={14} weight="bold" />
-                    </button>
-                  </AmountContainer>
+                      update(index, {
+                        ...coffee,
+                        quantity: coffee.quantity - 1,
+                      })
+                    }}
+                    increment={() => {
+                      update(index, {
+                        ...coffee,
+                        quantity: coffee.quantity + 1,
+                      })
+                    }}
+                  />
                   <CartButton
                     type="button"
                     onClick={() => {
@@ -103,6 +90,7 @@ export function CoffeeList() {
                         handleAddCoffeeToCart({
                           id: coffee.idCoffee,
                           name: coffee.title,
+                          image: coffee.image,
                           price: coffee.price,
                           quantity: coffee.quantity,
                         })

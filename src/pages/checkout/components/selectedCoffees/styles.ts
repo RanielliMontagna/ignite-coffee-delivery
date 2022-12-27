@@ -25,3 +25,19 @@ export const Button = styled.button`
     transition: all 0.1s ease-in-out;
   }
 `
+
+export const SummaryValuesContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  > div {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  > div:last-child {
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+`

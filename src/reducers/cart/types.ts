@@ -2,6 +2,7 @@ export interface ICoffee {
   id: string
   name: string
   price: number
+  image: string
   quantity: number
 }
 
